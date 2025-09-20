@@ -8,7 +8,7 @@
 - **Tags** : #crypto , #reversing , #bruteforce 
 - **Description** : Implementing your own military-grade encryption is usually not the best idea.
 
-![](./assets/lib/crypto-failure/challengeLogo.png)
+![](./assets/crypto-failure/challengeLogo.png)
 
 
 # Procedure
@@ -18,10 +18,10 @@
 ## Main challenge
 - This challenge is mainly the crypto challenge, i started with port scan and i found 2 open ports: 22, 8888. 
 - A normal looking web server was running on the port 8888. 
-![](./assets/lib/crypto-failure/Pasted image 20250919094449.png)
+![](./assets/crypto-failure/Pasted image 20250919094449.png)
 
 - i started a directory scan and i found few php files only but there is a `.bak` file which means may be the source code is available for us.
-![](./assets/lib/crypto-failure/Pasted image 20250919094546.png)
+![](./assets/crypto-failure/Pasted image 20250919094546.png)
 
 - Indeed It was the php source code.
 
@@ -107,13 +107,13 @@ if ( isset($_COOKIE['secure_cookie']) && isset($_COOKIE['user']))  {
 
 ## Changing the Username in Cookie
 - we know that the encrypted cookie is just a concatinated string of mutliple encrypted chunks of 8 characters. if we change the first 8 character block. it won't affect others. but we need to make sure the validation doesn't break. let's understand how the `crypt()` func works in php.
-![](./assets/lib/crypto-failure/Pasted image 20250919102409.png)
-![](./assets/lib/crypto-failure/Pasted image 20250919102337.png)
+![](./assets/crypto-failure/Pasted image 20250919102409.png)
+![](./assets/crypto-failure/Pasted image 20250919102337.png)
 
 - now we know that its not an encryption function, instead its a password hashing function and importantly. its hashing process depends on the length and type of salt provided. in our php source code, we show that it always uses 2 character random salt. so the process is like this.
 >`crypt("8 chars strings","2 chars salt")` -> `STD_DES` -> `2 chars salt + 11 characters encrypted value` -> `13 chars output`
 >
->![](./assets/lib/crypto-failure/Pasted image 20250919103051.png)
+>![](./assets/crypto-failure/Pasted image 20250919103051.png)
 - now if you look carefully at the cookie and break it in 13 chars chunks. you can see that it always starts with `U4` becuz that's the salt that was used.
 - now we know everything to get the first flag. we have the salt, we know the cookie was made using `guest:myuseragent:secretkey`. my user agent is Mozilla/5.0 something.
 - i created this simple php script to get the hash of `admin:Mo` cause this is the first 8 characters.
@@ -130,10 +130,10 @@ echo cryptstring($firstArg,$salt);
 
 ?>
 ```
-![](./assets/lib/crypto-failure/Pasted image 20250919103621.png)
+![](./assets/crypto-failure/Pasted image 20250919103621.png)
 - i used the same salt as our cookie has and changed the first chunk of our cookie. than i changed the user cookie to `admin`.
 
-![](./assets/lib/crypto-failure/Pasted image 20250919103603.png)
+![](./assets/crypto-failure/Pasted image 20250919103603.png)
 - It worked and i got the first flag. it was the easy part now we need to get the secret key used in cookie generation.
 
 ## Using Byte-at-a-time oracle attack
