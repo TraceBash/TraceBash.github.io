@@ -3,7 +3,7 @@ title: "Catch [ IDEK CTF ]"
 date: 2025-08-02
 categories: [Crypto]
 tags: [cryptography]
-author: DeadDroid
+author: dead_droid
 ---
 Author: Giapppp Description: Through every cryptic stride, the cat weaves secrets in the fabric of numbers—seek the patterns, and the path shall reveal the prize.
 
