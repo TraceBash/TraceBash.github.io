@@ -3,7 +3,7 @@ title: "Moby Dock [ H7CTF 2025 ]"
 date: 2025-10-19
 categories: [Boot2Root]
 tags: [boot2root]
-author: DeadDroid
+author: dead_droid
 ---
 
 #### Hey Guys! _Itz me DeadDroid_...
