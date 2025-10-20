@@ -1,3 +1,11 @@
+---
+title: "Crypto Failures [ THM ]"
+date: 2025-09-17
+categories: [Crypto]
+tags: [cryptography]
+author: DeadDroid
+---
+
 # Introduction
 ---
 ---
