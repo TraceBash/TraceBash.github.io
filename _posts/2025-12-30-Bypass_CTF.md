@@ -1,3 +1,11 @@
+---
+title: "Write Ups For Web, Misc, Crypto and Stego [ BYPASS CTF ]"
+date: 2025-12-30
+categories: [Web, Misc, Crypto, Stego]
+tags: [cryptography,steganography,web exploitation,miscellaneous]
+author: dead_droid
+---
+
 # BYPASS CTF – Write-Up For Misc, Web, Crypto and Stego 😈
 ---
 ---
