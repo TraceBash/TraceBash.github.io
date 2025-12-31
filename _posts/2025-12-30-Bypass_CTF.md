@@ -166,6 +166,7 @@ BYPASS_CTF{D0nt_trust_a11}
 
 #### 🔓 Exploitation / Core Logic
 - This is my solve script for this challenge.
+
 ```python
 import requests
 import json
