@@ -71,6 +71,7 @@ author: dead_droid
 
 - i created a python script to automate the answer submission and i got flag after 20 correct answers.
 ```python
+
 import requests
 import json
 
@@ -102,7 +103,8 @@ while True:
 	res = requests.post(ans_url,json=data,headers=headers)
 	print(res.json())
 	next_q = res.json().get("nextQuestion").get("expression")
-	answer = eval(next_q)      
+	answer = eval(next_q)
+
 ```
 
 #### 🏁 Flag
@@ -629,6 +631,7 @@ BYPASS_CTF{1nv151bl3_w4ll_3sc4p3d_404}
 #### 🔓 Exploitation / Core Logic
 - This is my solve script for this challenge.
 ```python
+
 import requests
 import time
 
@@ -683,6 +686,7 @@ def solve():
 
 if __name__ == "__main__":
     solve()
+
 ```
 
 #### 🏁 Flag
@@ -1100,7 +1104,9 @@ BYPASS_CTF{BADFACE}
 
 #### 🔓 Exploitation / Core Logic
 - ohk so we are given a .bmp file. i used some AI magic to create single bit planes images.
+
 ```python
+
 from PIL import Image
 import numpy as np
 
@@ -1132,6 +1138,7 @@ for ch in range(3):
     bit1_img[:,:,ch] = ((pixels[:,:,ch] >> 1) & 1) * 255
 Image.fromarray(bit1_img).save('bit1_all.png')
 print('Saved bit1_all.png')
+
 ```
 - running this script gave me these file and in one of them, i got this qr code.
 
@@ -1150,6 +1157,7 @@ print('Saved bit1_all.png')
 - i got a .rar file. extracting it gave me these so many pieces which we had to reassemble. lazy me gave the whole load to little innocent gpt and he worked on it for me.
 
 ```python
+
 from PIL import Image
 import numpy as np
 import os
@@ -1270,6 +1278,7 @@ print("Saved reassembled.png")
 print("\nGrid arrangement:")
 for row in range(5):
     print([piece_list[grid[row][col]] for col in range(5)])
+
 ```
 - this script reassembles the pieces and gives us the final reassembled.png
 
